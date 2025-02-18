@@ -31,7 +31,7 @@ app.post('/shorten', (req, res) => {
   }
 
   const shortId = generateShortId();
-  const shortUrl = `https://your-render-app.onrender.com/${shortId}`; // Replace with your Render app URL
+  const shortUrl = `https://url-shortener-j7kg.onrender.com/${shortId}`; // Replace with your Render app URL
 
   urlMap[shortId] = url;
 
