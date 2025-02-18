@@ -1,15 +1,17 @@
 const express = require('express');
-const path = require('path'); // Add this line
+const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware to parse JSON
 app.use(express.json());
-app.use(express.static('public'));
+
+// Serve static files from the "public" folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve the index.html file for the root URL
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // In-memory storage for shortened URLs
@@ -29,7 +31,7 @@ app.post('/shorten', (req, res) => {
   }
 
   const shortId = generateShortId();
-  const shortUrl = `http://localhost:${port}/${shortId}`;
+  const shortUrl = `https://your-render-app.onrender.com/${shortId}`; // Replace with your Render app URL
 
   urlMap[shortId] = url;
 
